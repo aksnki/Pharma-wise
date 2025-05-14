@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<style>
+  .error-message {
+    color: red;
+    font-size: 12px;
+    display: none;
+  }
+</style>
+<script type="text/javascript">
+    function validateForm() {
+        var oldPassword = document.getElementById("textfield").value;
+        var newPassword = document.getElementById("pass").value;
+        var confirmPassword = document.getElementById("confirm_pass").value;
+        var errorMessage = "";
+        var errorElement = document.getElementById("error-message");
+
+        // Check if passwords match
+        if (newPassword !== confirmPassword) {
+            errorMessage = "New password and confirm password do not match.";
+            showError(errorMessage);
+            return false;
+        }
+
+        // Check password pattern (example: minimum 8 characters, at least one number and one letter)
+        var pattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+        if (!pattern.test(newPassword)) {
+            errorMessage = "Password must be at least 8 characters long and contain at least one letter and one number.";
+            showError(errorMessage);
+            return false;
+        }
+
+        return true;
+    }
+
+    function showError(message) {
+        var errorElement = document.getElementById("error-message");
+        errorElement.innerText = message;
+        errorElement.style.display = "block";
+    }
+</script>
+</head>
+<body>
+{% extends "Customer/uindex.html" %}
+{% block body %}
+<form method="post" onsubmit="return validateForm()" action="/myapp/customer_change_password_post/">
+{% csrf_token %}
+  <table class="table table-striped">
+    <tr>
+      <th>Old password</th>
+      <td><label for="textfield"></label>
+      <input type="password" name="textfield" id="textfield" class="form-control" />
+      </td>
+    </tr>
+    <tr>
+      <th>New password</th>
+      <td><label for="textfield2"></label>
+      <input type="password" name="textfield2" id="pass" class="form-control" />
+      </td>
+    </tr>
+    <tr>
+      <th>Confrim password</th>
+      <td><label for="textfield3"></label>
+      <input type="password" name="textfield3" id="confirm_pass" class="form-control" />
+          <div id="error-message" class="error-message"></div></td>
+      </td>
+    </tr>
+      <td colspan="2"><center><input type="submit" name="Update" class="btn btn-success" id="Update" value="Update" /></center></td>
+    </tr>
+  </table>
+</form>
+{% endblock %}
+</body>
+</html>

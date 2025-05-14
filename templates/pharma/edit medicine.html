@@ -1,0 +1,88 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{% extends 'pharma/index.html' %}
+{% block body %}
+<body>
+
+<style>
+    .form-label {
+        color: #708090;
+        font-family: Monospace;
+    }
+    .form-control {
+        font-family: Monospace;
+    }
+</style>
+
+<form id="form1" name="form1" method="post" enctype="multipart/form-data" action="/myapp/pharma_manage_medicine_edit_post/" class="p-4 bg-light rounded shadow-sm mx-auto" style="max-width: 600px;">
+    <input type="hidden" name="id" value="{{ data.id }}">
+    {% csrf_token %}
+
+    <div class="mb-3">
+        <label for="textfield" class="form-label">Medicine Name</label>
+        <input type="text" name="textfield" id="textfield" value="{{ data.name }}" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="textfield2" class="form-label">Ingredients</label>
+        <input type="text" name="textfield2" id="textfield2" value="{{ data.ingredients }}" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="textfield3" class="form-label">Quantity</label>
+        <input type="text" name="textfield3" id="textfield3" value="{{ data.quantity }}" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="textfield4" class="form-label">Warning</label>
+        <input type="text" name="textfield4" id="textfield4" value="{{ data.warning }}" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="textfield5" class="form-label">Manufacture Date</label>
+        <input type="date" name="textfield5" id="textfield5" value="{{ data.manuf_date }}" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="textfield6" class="form-label">Expiry Date</label>
+        <input type="date" name="textfield6" id="textfield6" value="{{ data.exp_date }}" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="select" class="form-label">Category</label>
+        <select name="select" id="select" class="form-select" required>
+            <option {% if data.category == "tablet" %}selected{% endif %} value="tablet">Tablets</option>
+            <option {% if data.category == "syrup" %}selected{% endif %} value="syrup">Syrups</option>
+            <option {% if data.category == "injection" %}selected{% endif %} value="injection">Injections</option>
+            <option {% if data.category == "inhaler" %}selected{% endif %} value="inhaler">Inhalers</option>
+            <option {% if data.category == "drop" %}selected{% endif %} value="drop">Drops</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label for="fileField" class="form-label">Image</label>
+        <div class="mb-2">
+            <img src="{{ data.image }}" height="100px" width="150px" class="border rounded" >
+        </div>
+        <input type="file" name="fileField" id="fileField" class="form-control" >
+    </div>
+
+    <div class="mb-3">
+        <label for="textfield7" class="form-label">Price</label>
+        <input type="text" name="textfield7" id="textfield7" value="{{ data.price }}" class="form-control" pattern="[0-9]*" required>
+    </div>
+
+    <div class="text-center">
+        <button type="submit" name="button" id="button" class="btn btn-primary">Save</button>
+    </div>
+</form>
+
+</body>
+{% endblock %}
+
+
+{#</html>#}

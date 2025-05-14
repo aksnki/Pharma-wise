@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% extends 'admin/index.html' %}
+{% block body %}
+    <form method="post" action="/myapp/admin_view_complaint_post/#services">
+    {% csrf_token %}
+
+        <table class="pull-left">
+            <tr>
+                <th scope="col">From</th>
+                <th scope="col">
+                    <input type="date" class="form-control" name="fd" id="textfield" required/>
+                </th>
+                <th scope="col">To</th>
+                <th scope="col">
+                    <input type="date" name="td" class="form-control" id="textfield2" required/>
+                </th>
+                <th scope="col">
+                    <input class="btn btn-primary" type="submit" name="button" id="button" value="Search"/>
+                </th>
+            </tr>
+        </table>
+    </form>
+    <br>
+    <table class="table table-striped hover">
+    <thead class="table-dark">
+        <tr>
+            <th>SL NO</th>
+            <th>DATE</th>
+            <th>USERNAME</th>
+            <th>COMPLAINT</th>
+            <th>STATUS</th>
+            <th>REPLAY</th>
+        </tr>
+         </thead>
+    <tbody>
+        {% for i in data %}
+            <tr>
+                <td>{{ forloop.counter }}&nbsp;</td>
+                <td>{{ i.date }}</td>
+                <td>&nbsp;{{ i.User.name }}</td>
+                <td>&nbsp;{{ i.complaint }}</td>
+                <td>{{ i.stauts }}</td>
+                <td>{{ i.replay }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    </body>
+{% endblock %}
+</html>

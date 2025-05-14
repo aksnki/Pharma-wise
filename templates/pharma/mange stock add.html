@@ -1,0 +1,80 @@
+{% extends 'pharma/index.html' %}
+{% block body %}
+<body>
+
+<style>
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  .table-bordered {
+    border: 3px solid #ddd;
+  }
+  .table-bordered td {
+    padding: 10px;
+    text-align: left;
+  }
+  #select, #textfield2 {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+  }
+  .btn {
+    font-size: 16px;
+    padding: 10px 20px;
+    text-align: center;
+    cursor: pointer;
+  }
+  .btn-warning {
+    background-color: #f0ad4e;
+    color: #fff;
+    border: none;
+  }
+  .btn-warning:hover {
+    background-color: #ec971f;
+  }
+  .btn-info {
+    background-color: #5bc0de;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+  }
+  .btn-info:hover {
+    background-color: #31b0d5;
+  }
+</style>
+
+<form name="form1" method="post" action="/myapp/pharma_manage_stock_update_post/#about">
+      {% csrf_token %}
+    <table class="table table-bordered table-striped">
+        <tr>
+            <td>Medicine</td>
+            <td>
+                <label for="select"></label>
+                <select name="select" id="select" required>
+                    <option hidden>---select---</option>
+                    {% for i in data %}
+                    <option value="{{ i.id }}">{{ i.name }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Quantity</td>
+            <td>
+                <label for="textfield2"></label>
+                <input type="number" name="textfield2" id="textfield2" placeholder="No of Items" required/>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input class="btn btn-warning" type="submit" name="button" id="button" value="Update" style="width: 10%;">
+            </td>
+        </tr>
+    </table>
+    <a class="btn btn-info" href="/myapp/pharma_manage_stock_view/#about">View Stock</a>
+</form>
+{% endblock %}
+</body>

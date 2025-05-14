@@ -1,0 +1,71 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{% extends 'pharma/index.html' %}
+{% block body %}
+<body>
+<style>
+    th {
+        color: #708090;
+        font-family: Monospace;
+        text-align: left;
+        width: 150px;
+    }
+    td {
+        font-family: Monospace;
+    }
+</style>
+
+<form id="form1" name="form1" method="post" action="/myapp/pharma_edit_profile_post/">
+    <table class="table table-striped">
+        <tr>
+            <th></th>
+            <td><img src="{{ data.photo }}" height="200px" width="200px" style="border-radius: 50%;"></td>
+        </tr>
+        <tr>
+            <th>Pharmacy</th>
+            <td>{{ data.shop_name }}</td>
+        </tr>
+        <tr>
+            <th>E-mail</th>
+            <td>{{ data.email }}</td>
+        </tr>
+        <tr>
+            <th>Owner</th>
+            <td>{{ data.owner_name }}</td>
+        </tr>
+        <tr>
+            <th>Phone</th>
+            <td>{{ data.owner_phone }}</td>
+        </tr>
+        <tr>
+            <th>Licence</th>
+            <td><img src="{{ data.document }}" height="100" width="100"></td>
+        </tr>
+        <tr>
+            <th>Address</th>
+            <td>
+                {{ data.place }}<br>
+                {{ data.post }}<br>
+                {{ data.district }}<br>
+                {{ data.pin }}
+            </td>
+        </tr>
+        <tr>
+            <th>Pharmacy Status</th>
+            <td>{{ data.status }}</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><a class="btn btn-success" href="/myapp/pharma_edit_profile/">Edit</a></td>
+        </tr>
+    </table>
+</form>
+
+</body>
+{% endblock %}
+
+{#</html>#}

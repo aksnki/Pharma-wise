@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Details</title>
+  <style>
+    /* Style the table and center it */
+    .table-bordered {
+      width: 100%;
+      max-width: 600px;
+      margin: 20px auto;
+      border-collapse: collapse;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Table header styling */
+    th, td {
+      padding: 12px;
+      text-align: left;
+    }
+    th {
+      background-color: #218838;
+      font-weight: bold;
+      color: #333;
+    }
+    td {
+      background-color: #fff;
+    }
+
+    /* Product image styling */
+    img {
+      display: block;
+      margin: 0 auto;
+      border-radius: 4px;
+    }
+
+    /* Quantity input styling */
+    #quantity {
+      width: 80px;
+      padding: 6px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+    #quantity:focus {
+      border-color: #66afe9;
+      box-shadow: 0 0 8px rgba(102, 175, 233, 0.6);
+    }
+
+    /* Submit button styling */
+    #button {
+      padding: 8px 16px;
+      border: none;
+      background-color: #28a745;
+      color: #fff;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background-color 0.3s ease;
+    }
+    #button:hover {
+      background-color: #218838;
+    }
+
+    /* Style for empty table cells */
+    td[colspan] {
+      background-color: transparent;
+    }
+  </style>
+</head>
+<body>
+  {% extends "Customer/uindex.html" %}
+  {% block body %}
+  <form id="form1" name="form1" method="post" action="/myapp/customer_addtocart_post/">
+      {% csrf_token %}
+    <table class="table table-bordered">
+        <input name="pid" value="{{ data.id }}" type="hidden">
+      <tr>
+        <td colspan="2"><img src="{{ data.image }}" height="100" width="100"></td>
+      </tr>
+      <tr>
+        <th>Name</th>
+        <td>{{ data.name }}</td>
+      </tr>
+      <tr>
+        <th>Price</th>
+        <td>{{ data.price }}</td>
+      </tr>
+      <tr>
+        <th>Quantity</th>
+          <td><input type="number" name="quantity" id="quantity"  required></td>
+      </tr>
+      <tr>
+        <td colspan="2" style="text-align: center;">
+          <input class="btn btn-success" type="submit" name="button" id="button" value="Submit" />
+        </td>
+      </tr>
+    </table>
+  </form>
+  {% endblock %}
+</body>
+</html>
+
+</html>

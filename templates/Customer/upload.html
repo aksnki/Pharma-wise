@@ -1,0 +1,99 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+
+<body>
+{% extends "Customer/uindex.html" %}
+{% block body %}
+<style>
+    /* Main form container styling */
+    #form1 {
+        max-width: 500px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #f4f6f9;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Table styling */
+    .table-bordered {
+        width: 100%;
+        border-spacing: 0 10px;
+    }
+
+    /* File input styling */
+    input[type="file"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ced4da;
+        border-radius: 5px;
+        background-color: #fff;
+        color: #333;
+        font-size: 14px;
+    }
+
+    /* Buttons styling */
+    .btn {
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 5px;
+        font-weight: bold;
+        cursor: pointer;
+        width: 100%;
+        transition: background-color 0.3s;
+    }
+
+    /* Success button styling */
+    .btn-success {
+        background-color: #28a745;
+        color: #fff;
+        border: none;
+    }
+
+    .btn-success:hover {
+        background-color: #218838;
+    }
+
+    /* Primary button styling */
+    .btn-primary {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        text-align: center;
+        display: block;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+<form action="/myapp/customer_uploads_post/" method="post" enctype="multipart/form-data" name="form1" id="form1">
+    {% csrf_token %}
+    <input type="hidden" name="id" value="{{ id }}">
+    <table class="table table-bordered">
+        <tr>
+            <td>
+                <input type="file" name="fileField2" id="fileField2" required />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input class="btn btn-success" type="submit" name="button" id="button" value="Upload" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a class="btn btn-primary" href="/myapp/customer_view_uploads/">View Uploads</a>
+            </td>
+        </tr>
+    </table>
+</form>
+{% endblock %}
+</body>
+
+{#</html>#}

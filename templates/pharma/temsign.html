@@ -1,0 +1,174 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+-->
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <title>Minimal login and signup forms Responsive Widget Template : W3layouts</title>
+
+    <!-- Meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- google fonts -->
+    <link href="//fonts.googleapis.com/css2?family=Jost:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="/static/signup/css/style.css" type="text/css" media="all" />
+
+    <!-- fontawesome v5 -->
+    <script src="https://kit.fontawesome.com/af562a2a63.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+    <section class="forms">
+        <div class="container">
+            <!-- logo -->
+            <div class="logo">
+                <a class="brand-logo" href="index.html">PharmaWise</a>
+            </div>
+            <!-- //logo -->
+            <div class="forms-grid">
+
+                <!-- login -->
+{#                <div class="login">#}
+{#                    <span class="fas fa-sign-in-alt"></span>#}
+{#                    <strong>Welcome!</strong>#}
+{#                    <span>Sign in to your account</span>#}
+{##}
+{#                    <form action="#" method="post" class="login-form">#}
+{#                        <fieldset>#}
+{#                            <div class="form">#}
+{#                                <div class="form-row">#}
+{#                                    <span class="fas fa-user"></span>#}
+{#                                    <label class="form-label" for="input">Name</label>#}
+{#                                    <input type="text" class="form-text">#}
+{#                                </div>#}
+{#                                <div class="form-row">#}
+{#                                    <span class="fas fa-eye"></span>#}
+{#                                    <label class="form-label" for="input">Password</label>#}
+{#                                    <input type="password" class="form-text">#}
+{#                                </div>#}
+{#                                <div class="form-row bottom">#}
+{#                                    <div class="form-check">#}
+{#                                        <input type="checkbox" id="remenber" name="remenber" value="remenber">#}
+{#                                        <label for="remenber"> remember me?</label>#}
+{#                                    </div>#}
+{#                                    <a href="#url" class="forgot">forgot password?</a>#}
+{#                                </div>#}
+{#                                <div class="form-row button-login">#}
+{#                                    <button class="btn btn-login">Login <span#}
+{#                                            class="fas fa-arrow-right"></span></button>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </fieldset>#}
+{#                    </form>#}
+{#                </div>#}
+                <!-- //login -->
+
+                <!-- register -->
+                <div class="register">
+                    <span class="fas fa-user-circle"></span>
+                    <strong>Create account!</strong>
+                    <form action="/myapp/pharma_signup_post/" enctype="multipart/form-data" method="post">
+                        {% csrf_token %}
+                        <fieldset>
+                            <div class="form">
+                                <div class="form-row">
+                                    <span class="fas fa-user"></span>
+                                    <label class="form-label" for="input">Name</label>
+                                    <input type="text" name="textfield" pattern="[a-zA-Z\s]|{3,50}" required class="form-text">
+                                </div>
+                                <div class="form-row">
+                                    <span class="fas fa-envelope"></span>
+                                    <label class="form-label" for="input">E-mail</label>
+                                    <input type="email" name="textfield2" required class="form-text">
+                                </div>
+
+                                <div class="form-row">
+                                    <span class="fas fa-user"></span>
+                                    <label class="form-label" for="input">Name</label>
+                                    <input type="text" name="textfield5" required class="form-text">
+                                </div>
+
+                                <div class="form-row">
+                                    <span class="fas fa-lock"></span>
+                                    <label class="form-label" for="input">Phone</label>
+                                    <input type="text" name="textfield4"  pattern="[0-9]{10}" required class="form-text">
+                                </div>
+                                 <div class="form-row">
+                                    <span class="fas fa-user"></span>
+                                    <label class="form-label" for="input">Place</label>
+                                    <input type="text" name="textfield3" pattern="[a-zA-Z\s]{3,50}" required class="form-text">
+                                </div>
+                                 <div class="form-row">
+                                    <span class="fas fa-user"></span>
+                                    <label class="form-label" for="input">Post</label>
+                                    <input type="text" name="textfield8" pattern="[a-zA-Z\s]{3,50}" required class="form-text">
+                                </div>
+                                 <div class="form-row">
+                                    <span class="fas fa-user"></span>
+                                    <label class="form-label" for="input">District</label>
+                                    <input type="text" name="textfield10" pattern="[a-zA-Z\s]{3,50}" required class="form-text">
+                                </div>
+                                 <div class="form-row">
+                                    <span class="fas fa-user"></span>
+                                    <label class="form-label" for="input">PIN</label>
+                                    <input type="text" name="textfield9" pattern="[0-9]{6}" required class="form-text">
+                                </div>
+                                <div class="form-row">
+                                    <label class="form-label" for="input">Licence</label>
+                                   <input type="file" name="fileField" required id="fileField" />
+                                  </div>&nbsp;
+                                 <div class="form-row">
+                                    <label class="form-label" for="input">Photo<br>
+                                   <input type="file" name="fileField2" required id="fileField2" />
+                                  </div>
+
+                                <br>
+                                <div class="form-row">
+                                    <span class="fas fa-lock"></span>
+                                    <label class="form-label" for="input">Password</label>
+                                    <input type="password" name="textfield6"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required class="form-text">
+                                </div>
+                                <div class="form-row">
+                                    <span class="fas fa-lock"></span>
+                                    <label class="form-label" for="input">Retype Password</label>
+                                    <input type="password" name="textfield7"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"  required  class="form-text">
+                                </div>
+                                <div class="form-row button-login">
+                                    <button class="btn btn-login">Create <span
+                                            class="fas fa-arrow-right"></span></button>
+                                </div>
+                            </div>
+                        </fieldset>
+                        </form>
+
+{#                        <span class="create-account">Or create account using social media!</span>#}
+
+                        <div class="social-media">
+                            <a href="#facebook" class="fb"><span class="fab fa-facebook"></span></a>
+                            <a href="#twitter" class="tw"><span class="fab fa-twitter"></span></a>
+                            <a href="#pinterest" class="pi"><span class="fab fa-pinterest"></span></a>
+                        </div>
+                </div>
+                <!-- //register -->
+            </div>
+
+            <!-- copyright -->
+            <div class="copy-right">
+                <p>&copy; 2020 Minimal Forms. All rights reserved | Design by <a href="http://w3layouts.com/"
+                        target="_blank">W3layouts</a></p>
+            </div>
+            <!-- //copyright -->
+        </div>
+    </section>
+
+</body>
+
+</html>

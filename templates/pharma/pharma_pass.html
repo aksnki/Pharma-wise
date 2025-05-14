@@ -1,0 +1,96 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{% extends 'pharma/index.html' %}
+{% block body %}
+<body>
+ <style>
+        /* Main form styling */
+        #form1 {
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f4f6f9;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Table layout and cell spacing */
+        .table-bordered {
+            width: 100%;
+            border-spacing: 0 10px;
+        }
+
+        /* Labels and input fields */
+        td {
+            font-size: 15px;
+            color: #2f4f4f;
+            vertical-align: middle;
+            padding: 8px 10px;
+        }
+
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+            color: #333;
+            background-color: #fff;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus, input[type="password"]:focus {
+            border-color: #708090;
+            outline: none;
+        }
+
+        /* Submit button */
+        .btn-success {
+            background-color: #28a745;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        .btn-success:hover {
+            background-color: #218838;
+        }
+    </style>
+<form id="form1" name="form1" method="post" action="/myapp/pharma_change_password_post/#about">
+    {% csrf_token %}
+  <table class="table table-bordered">
+    <tr>
+{#      <td>Old password</td>#}
+      <td ><label for="textfield"></label>
+      <input type="password" name="textfield" id="textfield" placeholder="old password" class="form-control" required/></td>
+    </tr>
+    <tr>
+{#      <td>New password</td>#}
+      <td><label for="textfield2"></label>
+      <input type="password" name="textfield2" id="textfield2" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required placeholder="new password"
+      class="form-control"/></td>
+    </tr>
+    <tr>
+{#      <td>Confrim password</td>#}
+      <td><label for="textfield3"></label>
+      <input type="password" name="textfield3" id="confrim_password" placeholder="retype password"  class="form-control" required/></td>
+    </tr>
+    <tr>
+
+      <td><input class="btn btn-success" type="submit" name="button" id="button" value="Confrim" /></td>
+    </tr>
+  </table>
+</form>
+</body>
+{% endblock %}
+{#</html>#}

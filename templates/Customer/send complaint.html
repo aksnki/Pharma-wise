@@ -1,0 +1,73 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+
+
+{% extends 'Customer/uindex.html' %}
+{% block body %}
+<body>
+
+<form id="form1" name="form1" method="post" action="/myapp/customer_send_complaint_replay_post/" class="p-4 bg-light rounded shadow-sm">
+    {% csrf_token %}
+    <input type="hidden" name="Sid" value="{{ id }}">
+
+    <div class="form-group mb-3">
+        <table class="pull-left">
+      <tr>
+{#          <td>Pharmacy</td>#}
+          <th><select class="form-control" name="pid" required>
+                        <option value="">---Select Pharmacy---</option>
+
+              {% for i in data %}
+              <option value="{{ i.id }}">{{ i.shop_name }}</option>
+              {% endfor %}
+          </select></th>
+      </tr>
+        </table>
+        <label for="textarea" class="form-label" style="align-items: center; justify-content: center; display: flex"></label>
+        <textarea class="form-control" name="textarea" id="textarea" rows="6" placeholder="Type your message here..." required></textarea>
+    </div>
+
+    <div class="text-center">
+        <button class="btn btn-success" type="submit" name="button" id="button">Send</button>
+    </div>
+</form>
+
+</body>
+{% endblock %}
+
+
+
+{#<body>#}
+{#{% extends "Customer/uindex.html" %}#}
+{#{% block body %}#}
+{#<form id="form1" name="form1" method="post" action="/myapp/customer_send_complaint_replay_post/">#}
+{#    {% csrf_token %}#}
+{#  <table class="pull-left">#}
+{#      <tr>#}
+{#          <td>Pharmacy</td>#}
+{#          <th><select class="form-control" name="pid" required>#}
+{#                        <option value="">---Select Pharmacy---</option>#}
+{##}
+{#              {% for i in data %}#}
+{#              <option value="{{ i.id }}">{{ i.shop_name }}</option>#}
+{#              {% endfor %}#}
+{#          </select></th>#}
+{#      </tr>#}
+{#    <tr>#}
+{#      <td width="170">Complaint</td>#}
+{#      <td><label for="textarea"></label>#}
+{#      <textarea name="textarea" id="textarea" cols="45" rows="5"></textarea></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td>&nbsp;</td>#}
+{#      <td><input class="btn btn-success " type="submit" name="button" id="button" value="Submit" /></td>#}
+{#    </tr>#}
+{#  </table>#}
+{#</form>#}
+{#</body>#}
+{#{% endblock %}#}
+{#</html>#}

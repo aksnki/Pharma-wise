@@ -1,0 +1,52 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{% extends 'pharma/index.html' %}
+{% block body %}
+<body class="bg-light">
+    <div class="container mt-5">
+        <form id="form1" name="form1" method="post" action="/myapp/pharma_order_status_post/">
+            {% csrf_token %}
+             <input type="hidden" name="oid" value="{{ data }}" required>
+            <div class="card shadow-sm">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0">Order Status Update</h5>
+                </div>
+                <div class="card-body">
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="status" id="statusassigned" value="assigned">
+                        <label class="form-check-label" for="statusassigned">
+                            Order Assigned
+                        </label>
+                    </div>
+                     <div class="form-check">
+                        <input class="form-check-input" type="radio" name="status" id="statuspacked" value="packed">
+                        <label class="form-check-label" for="statuspacked">
+                            Ready to Delivery
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="status" id="statusDelivered" value="delivered">
+                        <label class="form-check-label" for="statusDelivered">
+                            Order Delivered
+                        </label>
+                    </div>
+
+                <div class="card-footer text-right">
+{#                    <td><a class="btn btn-warning" href="/myapp/pharma_order_status_post/">Update</a></td>#}
+                    <td><input type="submit" value="Update" class="btn btn-success"></td>
+                </div>
+{#                  <div class="card-footer text-right">#}
+{#                    <td><a class="btn btn-warning" href="/myapp/pharma_notification/{{ i.id }}">Send</a></td>#}
+{#                </div>#}
+            </div>
+        </form>
+    </div>
+</body>
+{% endblock %}
+
+{#</html>#}

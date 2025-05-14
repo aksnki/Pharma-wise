@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+{% extends "Customer/uindex.html" %}
+{% block body %}
+<style>
+    /* Profile card container */
+    #form1 {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #f4f6f9;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Table and table cell styling */
+    .table-borderless {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        border-collapse: collapse;
+    }
+
+    .table-borderless th, .table-borderless td {
+        padding: 12px;
+        text-align: left;
+        font-size: 16px;
+        color: #333;
+    }
+
+    /* Table headers */
+    th {
+        font-weight: bold;
+        color: #606c76;
+    }
+
+    /* Button styling */
+    .btn-warning {
+        background-color: #f0ad4e;
+        color: #fff;
+        font-weight: bold;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 5px;
+        text-decoration: none;
+        text-align: center;
+        transition: background-color 0.3s;
+    }
+
+    .btn-warning:hover {
+        background-color: #ec971f;
+    }
+</style>
+
+<form id="form1" name="form1" method="post" action="/myapp/customer_edit_profile/#services">
+    <table class="table table-borderless">
+        <tr>
+            <th>Name</th>
+            <td>{{ data.name }}</td>
+        </tr>
+        <tr>
+            <th>E-mail</th>
+            <td>{{ data.email }}</td>
+        </tr>
+        <tr>
+            <th>Phone</th>
+            <td>{{ data.phone }}</td>
+        </tr>
+        <tr>
+            <th>Gender</th>
+            <td>{{ data.gender }}</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td><a class="btn btn-warning" href="/myapp/customer_edit_profile/#services">Edit</a></td>
+        </tr>
+    </table>
+</form>
+{% endblock %}
+</body>
+
+</html>

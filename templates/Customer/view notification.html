@@ -1,0 +1,46 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+
+<body>
+{% extends "Customer/uindex.html" %}
+{% block body %}
+<form action="/myapp/customer_view_notification_post/" method="post">
+{% csrf_token %}
+{#  <tr>#}
+{#    <th scope="col">From </th>#}
+{#    <th scope="col"><input type="date" name="textfield" required id="textfield" /></th>#}
+{#    <th scope="col">To</th>#}
+{#    <th scope="col"><label for="textfield2"></label>#}
+{#      <input type="date" name="textfield2" required id="textfield2" /></th>#}
+{#    <th scope="col"><input type="submit" name="button" id="button" value="Search" /></th>#}
+{#  </tr>#}
+{#</table>#}
+
+<table class="table table-striped table-hover">
+   <thead class="table-dark">
+  <tr>
+    <th>SL NO</th>
+      <th>PHARMACY</th>
+    <th>NOTIFICATION</th>
+    <th>DATE</th>
+
+  </tr>  </thead>
+    <tbody>
+  {% for i in data %}
+  <tr>
+    <td >{{ forloop.counter }}</td>
+    <td>{{ i.pharmacy.shop_name }}</td>
+    <td>{{ i.notification }}</td>
+    <td>{{ i.date }}</td>
+  </tr>
+
+    {% endfor %}
+</table>
+</form>
+</body>
+{% endblock %}
+{#</html>#}

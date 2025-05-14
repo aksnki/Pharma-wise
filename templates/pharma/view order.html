@@ -1,0 +1,47 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{% extends 'pharma/index.html' %}
+{% block body %}
+<body>
+<form id="form1" name="form1" method="post" action="">
+<table class="pull-left">
+   <tr>
+    <th scope="col">From</th>
+    <th scope="col"><input type="date" name="textfield" id="textfield" /></th>
+    <th scope="col">To</th>
+    <th scope="col"><input type="date" name="textfield2" id="textfield2" /></th>
+    <th scope="col"><input type="submit" name="button" id="button" value="search" /></th>
+  </tr>
+</table>
+  <table class="table table-bordered">
+    <tr>
+      <td width="50">Sl no</td>
+      <td width="88">Username</td>
+      <td width="53">date</td>
+      <td width="68">item</td>
+      <td width="56">Amount</td>
+      <td width="72">Status</td>
+      <td width="63">&nbsp;</td>
+      <td width="90">&nbsp;</td>
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td height="89">{{ forloop.counter }}&nbsp;</td>
+      <td>{{ i.Order_main.User.name }}</td>
+      <td>{{ i.Order_main.date }}</td>
+      <td>{{ i.Stock.Medicine.name }}</td>
+      <td>{{ i.amount }}</td>
+      <td>{{ i.Order_main.status }}</td>
+      <td><a href="#">more</a></td>
+      <td><p><a href="/myapp/pharma_order_status/">update status</a></td>
+    </tr>
+         {% endfor %}
+  </table>
+</form>
+</body>
+{% endblock %}
+{#</html>#}

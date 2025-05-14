@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+{% extends "Customer/uindex.html" %}
+{% block body %}
+
+<form id="form1" name="form1" method="post" action="">
+  <table class="table table-striped table-hover">
+   <thead class="table-dark">
+    <tr>
+      <th>SL NO</th>
+      <th>NAME</th>
+      <th>QUANTITY</th>
+      <th>PRICE</th>
+      <th>AMOUNT</th>
+      <th>STOCK</th>
+        <td></td>
+    </tr>
+     </thead>
+    <tbody>
+      {% for i in data  %}
+
+    <tr>
+      <td>{{ forloop.counter }}</td>
+      <td>
+          <img src="{{ i.image }}" height="100px" width="100px"><br>
+          {{ i.name }}&nbsp;</td>
+      <td>{{ i.quantity }}&nbsp;</td>
+      <td>{{ i.price }}&nbsp;</td>
+      <td>{{ i.total }}&nbsp;</td>
+      <td>{% if i.s == 'out' %}
+           Out of stock
+      {% else %}
+         Available
+          {% endif %}
+      </td>
+           <td><a class="btn btn-danger" href="/myapp/customer_remove_cart/{{ i.id }}">Remove</a> </td>
+
+      </tr>
+      {% endfor %}
+  <tr>
+      <th>TOTAL AMOUNT</th>
+      <td colspan="2"><b>{{ ttl }}</b></td>
+  <td></td>
+  <td></td>
+    <td></td>
+
+{#  <td><a class="btn btn-warning" href="/myapp/customer_search_medicine/">Add More</a></td>#}
+
+      <td>
+          {% if data %}
+              {% if p == '' %}
+          <a class="btn btn-warning" href="/myapp/customer_raz_pay/{{ ttl }}">Payment</a>
+                  {% else %}
+                  {% endif %}
+      {% else %}
+          {% endif %}
+      </td>
+    </tr>
+  </table>
+{% endblock %}
+</form>
+</body>
+</html>

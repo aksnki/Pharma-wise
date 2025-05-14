@@ -1,0 +1,86 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+
+{% extends 'pharma/index.html' %}
+{% block body %}
+    <style>
+        th {
+            color: #708090;
+            font-family: Monospace;
+            text-align: left;
+            width: 150px;
+        }
+
+        td {
+            font-family: Monospace;
+        }
+    </style>
+
+    <body>
+    <form id="form1" name="form1" method="post" action="/myapp/pharma_edit_profile_post/#about">
+        <table class="table table-striped">
+            <tr>
+                <td colspan="2">
+                    <img src="{{ data.photo }}" height="200" width="200" style="border-radius: 50%">
+                    <input type="file" name="fileField2" id="fileField2"  class="form-control"/>
+                </td>
+            </tr>
+            <tr>
+                <th>Pharmacy</th>
+                <td><input type="text" name="textfield" value="{{ data.shop_name }}" id="textfield" required class="form-control"/></td>
+            </tr>
+            <tr>
+                <th>E-mail</th>
+                <td><input type="email" name="textfield" value="{{ data.email }}" id="textfield" required class="form-control"/></td>
+            </tr>
+            <tr>
+                <th>Owner</th>
+                <td><input type="text" name="textfield" value="{{ data.owner_name }}" id="textfield" required class="form-control"/></td>
+            </tr>
+            <tr>
+                <th>Phone</th>
+                <td><input type="text" name="textfield" value="{{ data.owner_phone }}" id="textfield"
+                           pattern="[6789][0-9]{9}" MAXLENGTH="10" REQUIRED class="form-control"/></td>
+            </tr>
+            <tr>
+                <th>Licence</th>
+                <td>
+                    <img src="{{ data.document }}" height="100" width="100">
+                    <input type="file" name="fileField" id="fileField" class="form-control"/>
+                </td>
+            </tr>
+            <tr>
+                <th>Place</th>
+                <td><input type="text" name="textfield" value="{{ data.place }}" id="textfield" required class="form-control"/></td>
+            </tr>
+            <tr>
+                <th>Post</th>
+                <td><input type="text" name="textfield" value="{{ data.post }}" id="textfield" required class="form-control"/></td>
+            </tr>
+            <tr>
+                <th>PIN</th>
+                <td><input type="text" name="textfield" value="{{ data.pin }}" id="textfield" pattern="[0-9](6)"
+                           required class="form-control"/></td>
+            </tr>
+            <tr>
+                <th>District</th>
+                <td><input type="text" name="textfield" value="{{ data.district }}" id="textfield" required class="form-control"/></td>
+            </tr>
+            {#    <tr>#}
+            {#      <th>Photo</th>#}
+            {#     #}
+            {#    </tr>#}
+            <tr>
+                <td>&nbsp;</td>
+                <td><input class="btn btn-success" type="submit" name="button" id="button" value="Update"/></td>
+            </tr>
+        </table>
+    </form>
+    </body>
+{% endblock %}
+
+{#</html>#}

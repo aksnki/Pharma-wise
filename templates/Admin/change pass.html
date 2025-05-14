@@ -1,0 +1,145 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{#{% extends 'admin/index.html' %}#}
+{#{% block body %}#}
+{#<body>#}
+{#    <form id="form1" name="form1" method="post" action="/myapp/admin_change_password_post/#services">#}
+{#        {% csrf_token %}#}
+{#        <table class="table table-borderless">#}
+{#            <tr>#}
+{#                <td>Old password</td>#}
+{#                <td><label for="old_password"></label>#}
+{#                    <input type="password" name="textfield" required id="old_password" class="form-control"/></td>#}
+{#            </tr>#}
+{#            <tr>#}
+{#                <td>New password</td>#}
+{#                <td><label for="new_password"></label>#}
+{#                    <input type="password" name="textfield2" required id="new_password" class="form-control" /></td>#}
+{#            </tr>#}
+{#            <tr>#}
+{#                <td>Retype password</td>#}
+{#                <td><label for="confirm_password"></label>#}
+{#                    <input type="password" name="textfield3" onkeyup="validate_password()" required id="confirm_password" class="form-control"/></td>#}
+{#            </tr>#}
+{#            <tr>#}
+{#                <td>&nbsp;</td>#}
+{#                <td><input class="btn btn-success" type="submit" name="button" id="button" value="Confirm" onclick="wrong_pass_alert()"/></td>#}
+{#            </tr>#}
+{#        </table>#}
+{#        <div id="wrong_pass_alert"></div>#}
+{#    </form>#}
+{#</body>#}
+{#{% endblock %}#}
+{#<script>#}
+{#    function validate_password() {#}
+{#        var pass = document.getElementById('new_password').value;#}
+{#        var confirm_pass = document.getElementById('confirm_password').value;#}
+{#        if (pass != confirm_pass) {#}
+{#            document.getElementById('wrong_pass_alert').style.color = 'red';#}
+{#            document.getElementById('wrong_pass_alert').innerHTML = '☒ Use same password';#}
+{#            document.getElementById('button').disabled = true;#}
+{#            document.getElementById('button').style.opacity = 0.4;#}
+{#        } else {#}
+{#            document.getElementById('wrong_pass_alert').style.color = 'green';#}
+{#            document.getElementById('wrong_pass_alert').innerHTML = '✔ Password Matched';#}
+{#            document.getElementById('button').disabled = false;#}
+{#            document.getElementById('button').style.opacity = 1;#}
+{#        }#}
+{#    }#}
+{##}
+{#    function wrong_pass_alert() {#}
+{#        if (document.getElementById('new_password').value != "" &&#}
+{#            document.getElementById('confirm_password').value != "") {#}
+{#            alert("Your response is submitted");#}
+{#        } else {#}
+{#            alert("Please fill all the fields");#}
+{#        }#}
+{#    }#}
+{#</script>#}
+{#</html>#}
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<style>
+  .error-message {
+    color: red;
+    font-size: 12px;
+    display: none;
+  }
+</style>
+<script type="text/javascript">
+function validateForm() {
+    var oldPassword = document.getElementById("textfield").value;
+    var newPassword = document.getElementById("pass").value;
+    var confirmPassword = document.getElementById("confirm_pass").value;
+
+    var errorMessage = "";
+    var errorElement = document.getElementById("error-message");
+
+    // Check if passwords match
+    if (newPassword !== confirmPassword) {
+        errorMessage = "New password and confirm password do not match.";
+        showError(errorMessage);
+        return false;
+    }
+
+    // Check password pattern (example: minimum 8 characters, at least one number and one letter)
+    var pattern = /^(?=.[A-Za-z])(?=.\d)[A-Za-z\d]{8,}$/;
+    if (!pattern.test(newPassword)) {
+        errorMessage = "Password must be at least 8 characters long and contain at least one letter and one number.";
+        showError(errorMessage);
+        return false;
+    }
+
+    return true;
+}
+
+function showError(message) {
+    var errorElement = document.getElementById("error-message");
+    errorElement.innerText = message;
+    errorElement.style.display = "block";
+}
+</script>
+</head>
+
+<body>
+{% extends "admin/index.html" %}
+{% block body %}
+
+<form action="/myapp/admin_change_password_post/" method="post" onsubmit="return validateForm()">
+{%csrf_token%}
+  <table class="table table-striped">
+    <tr>
+      <th>Old password</th>
+      <td><label for="textfield"></label>
+      <input type="text" name="textfield" id="textfield" class="form-control" />
+      </td>
+    </tr>
+    <tr>
+      <th>New password</th>
+      <td><label for="textfield2"></label>
+      <input type="text" name="textfield2" id="pass" class="form-control" />
+      </td>
+    </tr>
+    <tr>
+      <th>Confirm password</th>
+      <td><label for="textfield3"></label>
+      <input type="text" name="textfield3" id="confirm_pass" class="form-control" />
+          <div id="error-message" class="error-message"></div></td>
+      </td>
+    </tr>
+      <td colspan="2"><center><input type="submit" name="Update" class="btn btn-success" id="Update" value="Update" /></center></td>
+    </tr>
+  </table>
+</form>
+{% endblock %}
+</body>
+</html>

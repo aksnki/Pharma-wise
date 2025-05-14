@@ -1,0 +1,77 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{% extends 'pharma/index.html' %}
+{% block body %}
+<body>
+<form action="/myapp/pharma_signup_post/" method="post" enctype="multipart/form-data" name="form1" id="form1">
+    {% csrf_token %}
+  <table class="table table-bordered">
+    <tr>
+      <th>Username</th>
+      <td><label for="textfield9"></label>
+      <input type="text" name="textfield" id="textfield9" /></td>
+    </tr>
+    <tr>
+      <th>E-mail</th>
+      <td><label for="textfield10"></label>
+      <input type="email" name="textfield2" id="textfield10"/></td>
+    </tr>
+    <tr>
+      <th>Owner name</th>
+      <td><label for="textfield11"></label>
+        </label>
+      <input type="text" name="textfield5" id="textfield13" /></td>
+    </tr>
+    <tr>
+      <th>Owner phone</th>
+      <td><label for="textfield14"></label>
+      <input type="text" name="textfield4" id="textfield14" /></td>
+    </tr>
+    <tr>
+      <th>Place</th>
+      <td><input type="text" name="textfield3" id="textfield" /></td>
+    </tr>
+    <tr>
+      <td>Post</td>
+      <td><input type="text" name="textfield8" id="textfield2" /></td>
+    </tr>
+    <tr>
+      <td>PIN</td>
+      <td><input type="text" name="textfield9" id="textfield3" /></td>
+    </tr>
+    <tr>
+      <td>District</td>
+      <td><input type="text" name="textfield10" id="textfield4" /></td>
+    </tr>
+    <tr>
+      <td>ID Proof</td>
+      <td><label for="fileField"></label>
+      <input type="file" name="fileField" id="fileField" /></td>
+    </tr>
+    <tr>
+      <td>Photo</td>
+      <td><input type="file" name="fileField2" id="fileField2" /></td>
+    </tr>
+    <tr>
+      <td>Password</td>
+      <td><label for="textfield15"></label>
+      <input type="password" name="textfield6" id="textfield15" /></td>
+    </tr>
+    <tr>
+      <td>Confrim password</td>
+      <td><label for="textfield16"></label>
+      <input type="password" name="textfield7" id="textfield16" /></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><input class="btn btn-success" type="submit" name="button" id="button" value="Register" /></td>
+    </tr>
+  </table>
+</form>
+</body>
+{% endblock %}
+{#</html>#}

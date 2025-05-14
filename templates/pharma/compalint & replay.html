@@ -1,0 +1,111 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{% extends 'pharma/index.html' %}
+{% block body %}
+<body>
+  <style>
+    /* Container styling for centering the table */
+    .table-container {
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #f9fafb;
+        border-radius: 8px;
+        box-shadow: 0 0px 0px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Table styling */
+    .pull-left {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0 15px;
+    }
+
+    .pull-left th {
+        font-weight: bold;
+        color: #333;
+        padding: 10px 12px;
+    }
+
+    /* Input field styling */
+    .pull-left input[type="date"] {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #d1d5db;
+        border-radius: 5px;
+        font-size: 14px;
+        color: #4a5568;
+        outline: none;
+    }
+
+    /* Button styling */
+    .btn-primary {
+        background-color: #007bff;
+        color: #fff;
+        padding: 8px 16px;
+        border-radius: 5px;
+        border: none;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+<div class="table-container">
+<form id="form1" name="form1" method="post" action="/myapp/pharma_view_complaint_replay_post/#about">
+    {% csrf_token %}
+        <table class="pull-left">
+            <tr>
+                <th scope="col">From</th>
+                <th scope="col">
+                    <input type="date" name="textfield" id="textfield" />
+                </th>
+                <th scope="col">To</th>
+                <th scope="col">
+                    <input type="date" name="textfield2" id="textfield2" />
+                </th>
+                <th scope="col">
+                    <input class="btn btn-primary" type="submit" name="button" id="button" value="Search" />
+                </th>
+            </tr>
+        </table>
+    </form>
+</div>
+
+  <table class="table table-striped table-hover">
+   <thead class="table-dark">
+    <tr>
+        <th>SL NO</th>
+      <th>DATE</th>
+      <th>USERNAME</th>
+      <th>COMPLAINT</th>
+      <th>STATUS</th>
+{#      <th>REPLAY</th>#}
+      <th>REPLAY</th>
+    </tr>
+     </thead>
+    <tbody>
+      {% for i in data %}
+    <tr>
+      <td>{{ forloop.counter }}&nbsp;</td>
+      <td>{{ i.date }}</td>
+      <td >&nbsp;{{ i.User.name }}</td>
+      <td>&nbsp;{{ i.complaint }}</td>
+      <td>{{ i.stauts }}</td>
+{#      <td>{{ i.replay }}</td>#}
+      <td>{% if i.stauts == 'pending' %}<a class="btn btn-success" href="/myapp/pahrma_send_replay/{{ i.id }}#about">replay</a>{% else %}{{ i.replay }}{% endif %}</td>
+    </tr>
+      {% endfor %}
+  </table>
+{% endblock %}
+</body>
+
+{#</html>#}

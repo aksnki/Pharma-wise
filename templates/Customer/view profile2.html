@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+{% extends "Customer/uindex.html" %}
+{% block body %}
+<form id="form1" name="form1" method="post" action="/myapp/customer_edit_profile_post/#services">
+    {% csrf_token %}
+  <table class="table table-striped">
+    <tr>
+      <th>Name</th>
+      <th><label for="textfield"></label>
+      <input type="text" name="textfield" value="{{ data.name }}" id="textfield" required /></th>
+    </tr>
+    <tr>
+      <th>E-mail</th>
+      <td><label for="textfield2"></label>
+      <input type="text" name="textfield2" value="{{ data.email }}" id="textfield2" required/></td>
+    </tr>
+    <tr>
+      <th>phone</th>
+      <td><label for="textfield3"></label>
+      <input type="text" value="{{ data.phone }}" name="textfield3" id="textfield3" pattern="[6789][0-9{9}" required/></td>
+    </tr>
+    <tr>
+      <th>gender</th>
+      <td><p> <label>
+          <input type="radio" {% if data.gender == "Male" %}checked{% endif %} name="RadioGroup1" value="Male" id="RadioGroup1_0" />
+          Male</label>
+        <br />
+        <label>
+          <input type="radio" {% if data.gender == "Female" %}checked{% endif %}name="RadioGroup1" value="Female" id="RadioGroup1_1" />
+          Female</label>
+        <br />
+        <label>
+          <input type="radio" {% if data.gender == "Others" %}checked{% endif %}name="RadioGroup1" value="Others" id="RadioGroup1_2" />
+          Others</label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><input class="btn btn-success" type="submit" name="button" id="button" value="Submit" /></td>
+    </tr>
+    <tr></tr>
+  </table>
+</form>
+{% endblock %}
+</body>
+</html>

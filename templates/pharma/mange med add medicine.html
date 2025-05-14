@@ -1,0 +1,85 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{% extends 'pharma/index.html' %}
+{% block body %}
+<body>
+
+<style>
+    .form-label {
+        color: #708090;
+        font-family: Monospace;
+    }
+    .form-control, .form-select {
+        font-family: Monospace;
+    }
+</style>
+
+<form id="form1" name="form1" method="post" enctype="multipart/form-data" action="/myapp/pharma_manage_medicine_add_post/" class="p-4 bg-light rounded shadow-sm mx-auto" style="max-width: 600px;">
+    {% csrf_token %}
+
+    <div class="mb-3">
+        <label for="textfield" class="form-label">NAME</label>
+        <input type="text" name="textfield" id="textfield"  class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="textfield2" class="form-label">GENRIC NAME</label>
+        <input type="text" name="textfield2" id="textfield2" placeholder="chemical name" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="textfield3" class="form-label">QUANTITY</label>
+        <input type="text" name="textfield3" id="textfield3"  class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="textfield4" class="form-label">WARNING</label>
+        <input type="text" name="textfield4" id="textfield4" required placeholder="use type" class="form-control">
+    </div>
+
+    <div class="mb-3">
+        <label for="textfield5" class="form-label">MANUF.DATE</label>
+        <input type="date" name="textfield5" id="textfield5" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="textfield6" class="form-label">EXP.DATE</label>
+        <input type="date" name="textfield6" id="textfield6" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="select" class="form-label">CATEGORY</label>
+        <select name="select" id="select" class="form-select" required>
+            <option value="">---Select Category---</option>
+            <option value="tablet">Tablets</option>
+            <option value="syrup">Syrups</option>
+            <option value="injection">Injections</option>
+            <option value="inhaler">Inhalers</option>
+            <option value="drop">Drops</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label for="fileField" class="form-label">IMAGE</label>
+        <input type="file" name="fileField" id="fileField" required class="form-control">
+    </div>
+
+    <div class="mb-3">
+        <label for="textfield8" class="form-label">PRICE</label>
+        <input type="number" name="textfield8" id="textfield8" pattern="" required PLACEHOLDER="0.00" class="form-control">
+    </div>
+
+    <div class="text-center">
+        <button type="submit" name="button" id="button" class="btn btn-success">ADD</button>
+    </div>
+</form>
+
+</body>
+{% endblock %}
+
+
+{#</html>#}
